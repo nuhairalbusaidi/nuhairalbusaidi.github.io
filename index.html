@@ -1,219 +1,1160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="style.css">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nuhair Albusaidi | Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nuhair Albusaidi - IT Support and Software Developer Portfolio">
+    <title>Nuhair Albusaidi | IT Support • Software Developer</title>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
-scroll-behavior:smooth;
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-body{
-background:#0f172a;
-color:white;
-}
+    <style>
+        :root {
+            --bg: #070b14;
+            --bg-soft: #0d1322;
+            --card: rgba(17, 25, 42, 0.72);
+            --card-solid: #11192a;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --accent: #60a5fa;
+            --accent-2: #38bdf8;
+            --border: rgba(148, 163, 184, 0.15);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+            --radius: 22px;
+        }
 
-header{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-background:linear-gradient(135deg,#0f172a,#1e3a8a);
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-header h1{
-font-size:60px;
-}
+        html {
+            scroll-padding-top: 90px;
+        }
 
-header h2{
-color:#60a5fa;
-margin:15px 0;
-}
+        body {
+            font-family: "Inter", Arial, sans-serif;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(37, 99, 235, 0.15), transparent 30%),
+                radial-gradient(circle at 85% 20%, rgba(14, 165, 233, 0.10), transparent 28%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-header p{
-max-width:700px;
-margin:auto;
-line-height:1.7;
-}
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-.btn{
-display:inline-block;
-margin-top:30px;
-padding:15px 30px;
-background:#3b82f6;
-color:white;
-text-decoration:none;
-border-radius:30px;
-font-weight:bold;
-transition:.3s;
-}
+        .container {
+            width: min(1120px, 90%);
+            margin: 0 auto;
+        }
 
-.btn:hover{
-background:#2563eb;
-}
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(7, 11, 20, 0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+        }
 
-section{
-padding:80px 10%;
-}
+        .nav-inner {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-.title{
-font-size:40px;
-margin-bottom:40px;
-color:#60a5fa;
-}
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
+        .logo span {
+            color: var(--accent);
+        }
 
-.card{
-background:#1e293b;
-padding:25px;
-border-radius:15px;
-transition:.3s;
-}
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
 
-.card:hover{
-transform:translateY(-8px);
-}
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.25s ease;
+        }
 
-.skill{
-margin:20px 0;
-}
+        .nav-links a:hover {
+            color: var(--text);
+        }
 
-.bar{
-height:10px;
-background:#334155;
-border-radius:20px;
-overflow:hidden;
-}
+        .menu-btn {
+            display: none;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text);
+            border-radius: 10px;
+            padding: 8px 11px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
 
-.fill{
-height:100%;
-background:#3b82f6;
-}
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 120px 0 80px;
+        }
 
-footer{
-text-align:center;
-padding:40px;
-background:#020617;
-}
-</style>
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.12);
+            filter: blur(80px);
+            top: 20%;
+            right: 5%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--accent);
+            background: rgba(96, 165, 250, 0.08);
+            border: 1px solid rgba(96, 165, 250, 0.18);
+            padding: 8px 13px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: #4ade80;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(74, 222, 128, 0.8);
+        }
+
+        .hero h1 {
+            font-size: clamp(3.2rem, 8vw, 6.2rem);
+            line-height: 0.98;
+            letter-spacing: -0.07em;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: transparent;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.15rem, 2vw, 1.55rem);
+            color: #cbd5e1;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.85;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+            margin-top: 32px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 13px 20px;
+            border-radius: 13px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            border: 1px solid var(--border);
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #07111f;
+            border-color: transparent;
+        }
+
+        .btn-primary:hover {
+            background: #93c5fd;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.03);
+            color: var(--text);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.07);
+            border-color: rgba(148, 163, 184, 0.28);
+        }
+
+        .hero-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.75));
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-card-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 26px;
+        }
+
+        .avatar {
+            width: 58px;
+            height: 58px;
+            border-radius: 17px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #2563eb, #38bdf8);
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+        .hero-card h3 {
+            font-size: 1rem;
+        }
+
+        .hero-card small {
+            color: var(--muted);
+        }
+
+        .quick-list {
+            display: grid;
+            gap: 13px;
+        }
+
+        .quick-item {
+            padding: 14px;
+            background: rgba(255,255,255,0.035);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        .quick-item strong {
+            display: block;
+            color: white;
+            margin-bottom: 2px;
+        }
+
+        /* Sections */
+        section {
+            padding: 105px 0;
+        }
+
+        .section-heading {
+            max-width: 720px;
+            margin-bottom: 45px;
+        }
+
+        .section-label {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-size: 0.75rem;
+            font-weight: 800;
+            margin-bottom: 9px;
+        }
+
+        .title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            line-height: 1.1;
+            letter-spacing: -0.05em;
+            margin-bottom: 14px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .glass-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .glass-card p {
+            color: var(--muted);
+            line-height: 1.9;
+        }
+
+        .focus-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .focus-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .focus-icon {
+            flex: 0 0 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: rgba(96, 165, 250, 0.10);
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .focus-item h3 {
+            font-size: 0.98rem;
+            margin-bottom: 3px;
+        }
+
+        .focus-item p {
+            font-size: 0.87rem;
+            line-height: 1.55;
+        }
+
+        /* Experience */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 10px;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: linear-gradient(var(--accent), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 28px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 4px;
+            top: 7px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 5px rgba(96, 165, 250, 0.10);
+        }
+
+        .experience-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 27px;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateX(5px);
+            border-color: rgba(96, 165, 250, 0.3);
+        }
+
+        .experience-card .date {
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .experience-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 4px;
+        }
+
+        .experience-card .role {
+            color: #cbd5e1;
+            font-weight: 600;
+            margin-bottom: 13px;
+        }
+
+        .experience-card p {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .skill-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 22px;
+        }
+
+        .skill-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 11px;
+        }
+
+        .skill-head span:first-child {
+            font-weight: 700;
+        }
+
+        .skill-percent {
+            color: var(--accent);
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .bar {
+            height: 8px;
+            background: #1e293b;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .fill {
+            height: 100%;
+            width: 0;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #3b82f6, #38bdf8);
+            transition: width 1.3s ease;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            min-height: 245px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 25px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(96, 165, 250, 0.3);
+        }
+
+        .project-number {
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+        }
+
+        .project-card h3 {
+            margin: 12px 0 8px;
+            font-size: 1.18rem;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            padding: 5px 9px;
+            border-radius: 8px;
+            background: rgba(96, 165, 250, 0.08);
+            color: #bfdbfe;
+            font-size: 0.72rem;
+            border: 1px solid rgba(96, 165, 250, 0.12);
+        }
+
+        /* Contact */
+        .contact-box {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .contact-card {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.34), rgba(15, 23, 42, 0.75));
+            border: 1px solid rgba(96, 165, 250, 0.18);
+            border-radius: 28px;
+            padding: 35px;
+        }
+
+        .contact-card p {
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .contact-links {
+            display: grid;
+            gap: 12px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 13px 15px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.03);
+            border-radius: 13px;
+            color: #dbeafe;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .contact-link:hover {
+            background: rgba(255,255,255,0.06);
+            transform: translateX(4px);
+        }
+
+        .contact-icon {
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            background: rgba(96, 165, 250, 0.1);
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .availability {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: #bbf7d0;
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-top: 25px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 30px 0;
+            color: var(--muted);
+            font-size: 0.82rem;
+            text-align: center;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Mobile */
+        @media (max-width: 850px) {
+            .hero-grid,
+            .about-grid,
+            .contact-box {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-card {
+                max-width: 520px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 5%;
+                right: 5%;
+                flex-direction: column;
+                gap: 0;
+                background: rgba(7, 11, 20, 0.97);
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 14px 18px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .hero {
+                padding-top: 105px;
+            }
+
+            .hero h1 {
+                font-size: clamp(3rem, 16vw, 4.5rem);
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            .contact-card,
+            .glass-card,
+            .experience-card {
+                padding: 23px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation: none !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="#home" class="logo">Nuhair<span>.</span></a>
 
-<div>
+            <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu">
+                ☰
+            </button>
 
-<h1>Nuhair Albusaidi</h1>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<h2>IT Support • Software Developer</h2>
+    <!-- Hero -->
+    <header class="hero" id="home">
+        <div class="container hero-grid">
 
-<p>
-Passionate IT professional with experience in software development,
-technical support, database management and telecommunications.
-</p>
+            <div class="reveal">
+                <div class="eyebrow">
+                    <span class="status-dot"></span>
+                    IT • Software • Technology
+                </div>
 
-<a class="btn primary" href="/assets/Nuhair_Updated_CV-1.pdf" target="_blank">View CV</a>
-<a class="btn" href="/assets/Nuhair_Updated_CV-1.pdf" download>Download CV</a>
+                <h1>Nuhair<br><span>Albusaidi</span></h1>
 
+                <h2>IT Support • Software Developer</h2>
 
-</div>
+                <p>
+                    Passionate IT professional with experience in software development,
+                    technical support, database management and telecommunications.
+                    I enjoy solving technical problems and continuously learning new technologies.
+                </p>
 
-</header>
+                <div class="hero-buttons">
+                    <a class="btn btn-primary" href="/assets/Nuhair_Updated_CV-1.pdf" target="_blank" rel="noopener">
+                        View CV ↗
+                    </a>
 
-<section>
+                    <a class="btn btn-secondary" href="/assets/Nuhair_Updated_CV-1.pdf" download>
+                        Download CV ↓
+                    </a>
 
-<h2 class="title">About Me</h2>
+                    <a class="btn btn-secondary" href="#contact">
+                        Contact Me →
+                    </a>
+                </div>
+            </div>
 
-<p>
-I enjoy solving technical problems, developing software,
-working with databases, and continuously learning new technologies.
-</p>
+            <div class="hero-card reveal">
+                <div class="hero-card-top">
+                    <div class="avatar">NA</div>
+                    <div>
+                        <h3>Nuhair Albusaidi</h3>
+                        <small>IT Support & Software</small>
+                    </div>
+                </div>
 
-</section>
+                <div class="quick-list">
+                    <div class="quick-item">
+                        <strong>Technical Support</strong>
+                        Troubleshooting and practical IT assistance
+                    </div>
 
-<section>
+                    <div class="quick-item">
+                        <strong>Software Development</strong>
+                        Building and improving software solutions
+                    </div>
 
-<h2 class="title">Experience</h2>
+                    <div class="quick-item">
+                        <strong>Database Management</strong>
+                        Working with data and database systems
+                    </div>
 
-<div class="cards">
+                    <div class="quick-item">
+                        <strong>Telecommunications</strong>
+                        Experience in telecommunications operations
+                    </div>
+                </div>
+            </div>
 
-<div class="card">
-<h3>Ooredoo Oman</h3>
-<p>Trainee</p>
-<br>
-<p>Telecommunications operations, customer support and technical assistance.</p>
-</div>
+        </div>
+    </header>
 
-<div class="card">
-<h3>Bank Muscat</h3>
-<p>Intern</p>
-<br>
-<p>General banking internship with practical experience in banking procedures.</p>
-</div>
+    <main>
 
-</div>
+        <!-- About -->
+        <section id="about">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <div class="section-label">01 — About</div>
+                    <h2 class="title">Building skills through technology.</h2>
+                    <p>
+                        A focused IT professional who enjoys solving problems, developing software,
+                        working with databases and learning new technologies.
+                    </p>
+                </div>
 
-</section>
+                <div class="about-grid">
+                    <div class="glass-card reveal">
+                        <p>
+                            I enjoy solving technical problems, developing software,
+                            working with databases, and continuously learning new technologies.
+                            My experience includes telecommunications operations, customer support,
+                            technical assistance and practical exposure to banking procedures.
+                        </p>
+                    </div>
 
-<section>
+                    <div class="glass-card reveal">
+                        <div class="focus-list">
+                            <div class="focus-item">
+                                <div class="focus-icon">01</div>
+                                <div>
+                                    <h3>Problem Solving</h3>
+                                    <p>Approaching technical challenges with a practical mindset.</p>
+                                </div>
+                            </div>
 
-<h2 class="title">Skills</h2>
+                            <div class="focus-item">
+                                <div class="focus-icon">02</div>
+                                <div>
+                                    <h3>Continuous Learning</h3>
+                                    <p>Developing knowledge and improving technical abilities.</p>
+                                </div>
+                            </div>
 
-<div class="skill">
-Programming
-<div class="bar"><div class="fill" style="width:90%"></div></div>
-</div>
+                            <div class="focus-item">
+                                <div class="focus-icon">03</div>
+                                <div>
+                                    <h3>Technical Support</h3>
+                                    <p>Helping users and working through technical issues.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<div class="skill">
-Database Management
-<div class="bar"><div class="fill" style="width:85%"></div></div>
-</div>
+        <!-- Experience -->
+        <section id="experience">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <div class="section-label">02 — Experience</div>
+                    <h2 class="title">Where I've gained experience.</h2>
+                    <p>Practical experience across telecommunications and banking environments.</p>
+                </div>
 
-<div class="skill">
-Technical Support
-<div class="bar"><div class="fill" style="width:90%"></div></div>
-</div>
+                <div class="timeline">
 
-<div class="skill">
-Problem Solving
-<div class="bar"><div class="fill" style="width:88%"></div></div>
-</div>
+                    <div class="timeline-item reveal">
+                        <span class="timeline-dot"></span>
+                        <div class="experience-card">
+                            <div class="date">2026</div>
+                            <h3>Ooredoo Oman</h3>
+                            <div class="role">Trainee</div>
+                            <p>
+                                Telecommunications operations, customer support and technical assistance.
+                            </p>
+                        </div>
+                    </div>
 
-</section>
+                    <div class="timeline-item reveal">
+                        <span class="timeline-dot"></span>
+                        <div class="experience-card">
+                            <div class="date">Internship</div>
+                            <h3>Bank Muscat</h3>
+                            <div class="role">Intern</div>
+                            <p>
+                                General banking internship with practical experience in banking procedures.
+                            </p>
+                        </div>
+                    </div>
 
-<section>
+                </div>
+            </div>
+        </section>
 
-<h2 class="title">Contact</h2>
+        <!-- Skills -->
+        <section id="skills">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <div class="section-label">03 — Skills</div>
+                    <h2 class="title">Technical strengths.</h2>
+                    <p>A snapshot of the core areas highlighted in my portfolio.</p>
+                </div>
 
-<p>📍 Muscat, Oman</p>
-<p>📞 +968 95905121</p>
-<p>📧 nuhairalbusaidi@gmail.com</p>
+                <div class="skills-grid">
 
-</section>
+                    <div class="skill-card reveal">
+                        <div class="skill-head">
+                            <span>Programming</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="bar">
+                            <div class="fill" data-width="90%"></div>
+                        </div>
+                    </div>
 
-<footer>
+                    <div class="skill-card reveal">
+                        <div class="skill-head">
+                            <span>Database Management</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="bar">
+                            <div class="fill" data-width="85%"></div>
+                        </div>
+                    </div>
 
-<p>© 2026 Nuhair Albusaidi. All Rights Reserved.</p>
+                    <div class="skill-card reveal">
+                        <div class="skill-head">
+                            <span>Technical Support</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="bar">
+                            <div class="fill" data-width="90%"></div>
+                        </div>
+                    </div>
 
-</footer>
+                    <div class="skill-card reveal">
+                        <div class="skill-head">
+                            <span>Problem Solving</span>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                        <div class="bar">
+                            <div class="fill" data-width="88%"></div>
+                        </div>
+                    </div>
 
-<script src="script.js"></script>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <div class="section-label">04 — Projects</div>
+                    <h2 class="title">Things I'm building.</h2>
+                    <p>
+                        A space for your best development work. Replace the placeholders below
+                        with your actual GitHub projects as you add them.
+                    </p>
+                </div>
+
+                <div class="projects-grid">
+
+                    <article class="project-card reveal">
+                        <div>
+                            <div class="project-number">PROJECT 01</div>
+                            <h3>Portfolio Website</h3>
+                            <p>
+                                A modern responsive portfolio designed to showcase my skills,
+                                experience and development work.
+                            </p>
+                        </div>
+
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div>
+                            <div class="project-number">PROJECT 02</div>
+                            <h3>Software Development</h3>
+                            <p>
+                                A place to showcase software projects, applications and
+                                programming work developed over time.
+                            </p>
+                        </div>
+
+                        <div class="project-tags">
+                            <span class="tag">Programming</span>
+                            <span class="tag">Development</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div>
+                            <div class="project-number">PROJECT 03</div>
+                            <h3>More Coming Soon</h3>
+                            <p>
+                                New projects will be added here as I continue developing
+                                my technical skills and building my portfolio.
+                            </p>
+                        </div>
+
+                        <div class="project-tags">
+                            <span class="tag">Future Work</span>
+                            <span class="tag">GitHub</span>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <div class="container">
+                <div class="contact-box">
+
+                    <div class="contact-card reveal">
+                        <div class="section-label">05 — Contact</div>
+                        <h2 class="title">Let's connect.</h2>
+                        <p>
+                            Interested in discussing an opportunity, project or technical work?
+                            Feel free to get in touch.
+                        </p>
+
+                        <a class="btn btn-primary" href="mailto:nuhairalbusaidi@gmail.com">
+                            Send Email →
+                        </a>
+
+                        <div class="availability">
+                            <span class="status-dot"></span>
+                            Open to opportunities
+                        </div>
+                    </div>
+
+                    <div class="glass-card reveal">
+                        <div class="contact-links">
+
+                            <a class="contact-link" href="mailto:nuhairalbusaidi@gmail.com">
+                                <span class="contact-icon">@</span>
+                                <span>
+                                    <strong>Email</strong><br>
+                                    nuhairalbusaidi@gmail.com
+                                </span>
+                            </a>
+
+                            <a class="contact-link" href="tel:+96895905121">
+                                <span class="contact-icon">☎</span>
+                                <span>
+                                    <strong>Phone</strong><br>
+                                    +968 95905121
+                                </span>
+                            </a>
+
+                            <div class="contact-link">
+                                <span class="contact-icon">⌖</span>
+                                <span>
+                                    <strong>Location</strong><br>
+                                    Muscat, Oman
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Nuhair Albusaidi. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation
+        const menuBtn = document.getElementById("menuBtn");
+        const navLinks = document.getElementById("navLinks");
+
+        menuBtn.addEventListener("click", () => {
+            navLinks.classList.toggle("open");
+        });
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("open");
+            });
+        });
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll(".reveal");
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12
+        });
+
+        revealElements.forEach(element => revealObserver.observe(element));
+
+        // Animate skill bars when visible
+        const skillBars = document.querySelectorAll(".fill");
+
+        const skillObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.width = entry.target.dataset.width;
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.4
+        });
+
+        skillBars.forEach(bar => skillObserver.observe(bar));
+    </script>
 
 </body>
-
 </html>
